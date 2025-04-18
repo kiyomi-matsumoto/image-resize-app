@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>画像リサイズ</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>画像リサイズアプリ</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>画像リサイズアプリ</h1>
-  <input type="file" id="imageInput" accept="image/*" />
+  <h1>画像リサイズ（800px・150dpi）</h1>
+  <input type="file" id="imageInput" accept="image/*">
   <canvas id="canvas" class="hidden"></canvas>
-  <a id="downloadLink" class="hidden" download="resized-image.jpg">画像をダウンロード</a>
+  <a id="downloadLink" class="hidden" download>画像をダウンロード</a>
 
   <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js"></script>
   <script src="script.js"></script>
