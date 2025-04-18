@@ -4,18 +4,19 @@ body {
   margin: 2em;
 }
 
-.hidden {
-  display: none;
-}
-
 canvas {
-  margin-top: 20px;
+  margin: 20px auto;
+  display: block;
   max-width: 90%;
   border: 1px solid #ccc;
 }
 
-/* ボタン共通 */
-button, input[type="file"], a {
+.hidden {
+  display: none;
+}
+
+/* 共通ボタン */
+.custom-button {
   display: inline-block;
   padding: 10px 20px;
   margin: 15px auto;
@@ -24,16 +25,15 @@ button, input[type="file"], a {
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
+  color: white;
 }
 
-/* ファイル選択ボタン（青） */
-input[type="file"] {
+/* 青ボタン */
+.custom-button.blue {
   background-color: #007bff;
-  color: white;
 }
 
-/* ダウンロードボタン（ピンク） */
-a#downloadLink {
+/* ピンクボタン */
+.custom-button.pink {
   background-color: #e91e63;
-  color: white;
 }
