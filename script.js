@@ -1,6 +1,7 @@
 const imageInput = document.getElementById('imageInput');
 const canvas = document.getElementById('canvas');
 const downloadLink = document.getElementById('downloadLink');
+const fileNameDisplay = document.getElementById('fileName');
 
 const picaResizer = pica();
 
@@ -8,7 +9,10 @@ imageInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
-  const fileName = file.name.replace(/\.[^/.]+$/, ""); // 拡張子除去
+  // ファイル名を表示
+  fileNameDisplay.textContent = file.name;
+
+  const fileName = file.name.replace(/\.[^/.]+$/, ""); // 拡張子を除く
   const newFileName = `${fileName}_02.jpg`;
 
   const img = new Image();
