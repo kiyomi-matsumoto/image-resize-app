@@ -4,6 +4,45 @@ body {
   margin: 2em;
 }
 
+/* ファイル選択の横並び */
+#uploadForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* ファイル選択ボタン風ラベル */
+.file-label {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  border-radius: 8px;
+  background-color: #1e88e5; /* 青色 */
+  color: white;
+  font-size: 14px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.file-label input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+/* 選択されたファイル名表示 */
+#fileName {
+  font-size: 14px;
+}
+
+/* canvas 表示用 */
 canvas {
   margin: 20px auto;
   display: block;
@@ -11,15 +50,16 @@ canvas {
   border: 1px solid #ccc;
 }
 
+/* 非表示 */
 .hidden {
   display: none;
 }
 
-/* 共通ボタン */
+/* 共通ボタンスタイル */
 .custom-button {
   display: inline-block;
   padding: 10px 20px;
-  margin: 15px auto;
+  margin: 20px auto;
   font-size: 16px;
   border: none;
   border-radius: 8px;
@@ -28,12 +68,7 @@ canvas {
   color: white;
 }
 
-/* 青ボタン */
-.custom-button.blue {
-  background-color: #007bff;
-}
-
-/* ピンクボタン */
+/* ピンク色のダウンロードボタン */
 .custom-button.pink {
   background-color: #e91e63;
 }
