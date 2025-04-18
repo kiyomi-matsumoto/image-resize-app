@@ -13,3 +13,27 @@ canvas {
   max-width: 90%;
   border: 1px solid #ccc;
 }
+
+/* ボタン共通 */
+button, input[type="file"], a {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 15px auto;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ファイル選択ボタン（青） */
+input[type="file"] {
+  background-color: #007bff;
+  color: white;
+}
+
+/* ダウンロードボタン（ピンク） */
+a#downloadLink {
+  background-color: #e91e63;
+  color: white;
+}
