@@ -8,15 +8,19 @@
 <body>
   <h1>画像リサイズ（800px・150dpi）</h1>
 
-  <!-- 青ボタン：ファイル選択 -->
-  <input type="file" id="imageInput" accept="image/*">
+  <!-- ファイル選択（青ボタン） -->
+  <label for="imageInput" class="custom-button blue">ファイルを選択</label>
+  <input type="file" id="imageInput" accept="image/*" hidden>
 
-  <!-- ピンクボタン：ダウンロード -->
-  <div>
-    <a id="downloadLink" class="hidden" download>画像をダウンロード</a>
+  <!-- リサイズ後の画像 -->
+  <div id="canvasContainer">
+    <canvas id="canvas" class="hidden"></canvas>
   </div>
 
-  <canvas id="canvas" class="hidden"></canvas>
+  <!-- ダウンロード（ピンクボタン） -->
+  <div>
+    <a id="downloadLink" class="custom-button pink hidden" download>画像をダウンロード</a>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js"></script>
   <script src="script.js"></script>
