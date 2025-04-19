@@ -1,30 +1,34 @@
 body {
-  text-align: center;
   font-family: sans-serif;
-  margin: 2em;
+  margin: 2em 1em;
+  text-align: center;
 }
 
-/* ファイル選択の横並び */
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+
+/* フォーム部分（ファイル選択） */
 #uploadForm {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
 }
 
-/* ファイル選択ボタン風ラベル */
 .file-label {
   position: relative;
   overflow: hidden;
-  display: inline-block;
   border-radius: 8px;
-  background-color: #1e88e5; /* 青色 */
+  background-color: #1e88e5;
   color: white;
   font-size: 14px;
   padding: 10px 20px;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .file-label input[type="file"] {
@@ -32,22 +36,42 @@ body {
   left: 0;
   top: 0;
   opacity: 0;
-  cursor: pointer;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 
-/* 選択されたファイル名表示 */
 #fileName {
   font-size: 14px;
+  max-width: 90%;
+  word-break: break-all;
 }
 
-/* canvas 表示用 */
+/* canvas */
 canvas {
   margin: 20px auto;
   display: block;
-  max-width: 90%;
+  max-width: 100%;
+  height: auto;
   border: 1px solid #ccc;
+}
+
+/* 共通ボタン */
+.custom-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ピンクのダウンロードボタン */
+.custom-button.pink {
+  background-color: #e91e63;
 }
 
 /* 非表示 */
@@ -55,20 +79,23 @@ canvas {
   display: none;
 }
 
-/* 共通ボタンスタイル */
-.custom-button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 20px auto;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  cursor: pointer;
-  color: white;
-}
+/* レスポンシブ調整 */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.2rem;
+  }
 
-/* ピンク色のダウンロードボタン */
-.custom-button.pink {
-  background-color: #e91e63;
+  .file-label {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  #fileName {
+    font-size: 13px;
+  }
+
+  .custom-button {
+    width: 90%;
+    font-size: 15px;
+  }
 }
