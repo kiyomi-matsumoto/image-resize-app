@@ -5,7 +5,6 @@ const fileNameDisplay = document.getElementById('fileName');
 
 const picaResizer = pica();
 
-// ファイルサイズをKB/MBに変換する関数
 function formatFileSize(bytes) {
   if (bytes >= 1024 * 1024) {
     return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
@@ -19,8 +18,11 @@ imageInput.addEventListener('change', async (event) => {
   if (!file) return;
 
   const originalSizeText = formatFileSize(file.size);
-  const fileName = file.name.replace(/\.[^/.]+$/, ""); // 拡張子を除く
+  const fileName = file.name.replace(/\.[^/.]+$/, "");
   const newFileName = `${fileName}_02.jpg`;
+
+  // ダウンロードボタンは一旦非表示に戻す（再選択時に備えて）
+  downloadLink.classList.add('hidden');
 
   const img = new Image();
   img.onload = async () => {
@@ -33,21 +35,17 @@ imageInput.addEventListener('change', async (event) => {
 
     await picaResizer.resize(img, canvas);
 
-    // Blob作成 → リサイズ後サイズ取得
     canvas.toBlob(blob => {
       const resizedSizeText = formatFileSize(blob.size);
-
-      // ✅ 表示を更新（元とリサイズ後両方）
       fileNameDisplay.textContent = `${file.name}（元: ${originalSizeText} → リサイズ後: ${resizedSizeText}）`;
 
-      // ダウンロードリンク設定
       const url = URL.createObjectURL(blob);
       downloadLink.href = url;
       downloadLink.download = newFileName;
 
-      // 表示切り替え
-      canvas.classList.remove('hidden');
+      // ✅ リサイズ完了後にボタン表示
       downloadLink.classList.remove('hidden');
+      canvas.classList.remove('hidden');
     }, 'image/jpeg', 0.9);
   };
 
