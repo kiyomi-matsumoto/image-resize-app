@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>画像リサイズアプリ</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>画像リサイズ（800px・150dpi）</h1>
 
-  <!-- ファイル選択ボタン＋ファイル名表示 -->
   <form id="uploadForm">
     <label class="file-label">
-      <input type="file" id="imageInput" accept="image/*">
+      <input type="file" id="imageInput" accept="image/*" />
       <span>ファイルを選択</span>
     </label>
     <span id="fileName">選択されていません</span>
   </form>
 
-  <!-- リサイズされた画像 -->
   <canvas id="canvas" class="hidden"></canvas>
 
-  <!-- ダウンロードボタン -->
   <div>
     <a id="downloadLink" class="custom-button pink hidden" download>画像をダウンロード</a>
   </div>
 
-  <!-- ライブラリとスクリプト -->
   <script src="https://cdn.jsdelivr.net/npm/pica@8.0.0/dist/pica.min.js"></script>
   <script src="script.js"></script>
 </body>
