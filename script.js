@@ -5,13 +5,20 @@ const fileNameDisplay = document.getElementById('fileName');
 
 const picaResizer = pica();
 
+// ファイルサイズをKB/MBに変換する関数
+function formatFileSize(bytes) {
+  if (bytes >= 1024 * 1024) {
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  } else {
+    return (bytes / 1024).toFixed(1) + ' KB';
+  }
+}
+
 imageInput.addEventListener('change', async (event) => {
   const file = event.target.files[0];
   if (!file) return;
 
-  // ファイル名を表示
-  fileNameDisplay.textContent = file.name;
-
+  const originalSizeText = formatFileSize(file.size);
   const fileName = file.name.replace(/\.[^/.]+$/, ""); // 拡張子を除く
   const newFileName = `${fileName}_02.jpg`;
 
@@ -26,13 +33,21 @@ imageInput.addEventListener('change', async (event) => {
 
     await picaResizer.resize(img, canvas);
 
-    canvas.classList.remove('hidden');
-    downloadLink.classList.remove('hidden');
-
+    // Blob作成 → リサイズ後サイズ取得
     canvas.toBlob(blob => {
+      const resizedSizeText = formatFileSize(blob.size);
+
+      // ✅ 表示を更新（元とリサイズ後両方）
+      fileNameDisplay.textContent = `${file.name}（元: ${originalSizeText} → リサイズ後: ${resizedSizeText}）`;
+
+      // ダウンロードリンク設定
       const url = URL.createObjectURL(blob);
       downloadLink.href = url;
       downloadLink.download = newFileName;
+
+      // 表示切り替え
+      canvas.classList.remove('hidden');
+      downloadLink.classList.remove('hidden');
     }, 'image/jpeg', 0.9);
   };
 
